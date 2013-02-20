@@ -65,7 +65,22 @@ foreach($templates as $template){
 		
 		@mkdir('output/'.$template);
 		
-		chmod('output/'.$template, 0775);
+		chmod('output/'.$template, 0777);
+		
+		
+		$static_assets = scandir('templates/'.$template);
+		
+		foreach($static_assets as $asset){
+			if(!in_array($asset, $ignore)){
+			
+				exec('cp -r templates/'.$template.'/'.$asset.' output/'.$template.'/');
+				
+				exec('chmod -R 777 output/'.$template.'/'.$asset);
+				
+			}
+		}
+		
+		
 		
 		foreach($db as $page){
 			if(!in_array($page, $ignore)){
@@ -76,7 +91,7 @@ foreach($templates as $template){
 				
 				@file_put_contents('output/'.$template.'/'.$page.'.html', $html);
 				
-				chmod('output/'.$template.'/'.$page.'.html', 0775);
+				chmod('output/'.$template.'/'.$page.'.html', 0777);
 				
 			}
 		}
