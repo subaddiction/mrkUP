@@ -16,25 +16,40 @@ require_once('lib/Markdown.php');
 use \Michelf\Markdown;
 
 function renderMarkdown($config='db/default/config',$model='templates/default/index.html',$text='#Test'){
+	global $ignore;
 	
 	$html = renderModel($config,$model);
+	
+	$pages = scandir($config);
+	$menu = '<ul id="mainMenu">';
+		foreach($pages as $page){
+			if(!in_array($page, $ignore)){
+				$pageName = ($page == 'index')?'home':$page;
+				$menu .= '<li><a href="{URL}/'.$page.'.html">'.$pageName.'</a></li>';
+			}
+		}
+	$menu .= '</ul>';
+	
+	$html = str_replace('{MENU}', $menu, $html);
+	
+	//re-render to put urls in menu
+	$html = renderModel($config,$html,false);
 	
 	//echo htmlentities($html);
 	
 	$content = Markdown::defaultTransform($text);
 	
 	//echo htmlentities($content);
-	
 	$html = str_replace('{CONTENT}', $content, $html);
 	
 	return $html;
 }
 
 
-function renderModel($config='db/default/config',$model='templates/default/index.html'){
+function renderModel($config='db/default',$model='templates/default/index.html',$modelIsPath=true){
 	
 	$fields = array();
-	$config = file($config);
+	$config = file($config.'/config');
 	
 	foreach($config as $field){
 		$field = explode('|:|', $field);
@@ -44,7 +59,9 @@ function renderModel($config='db/default/config',$model='templates/default/index
 		$fields[$field_key] = $field_value;
 	}
 	
+	if($modelIsPath){
 	$model = @file_get_contents($model);
+	}
 	
 	foreach($fields as $key => $value){
 		$model = str_replace('{'.$key.'}', trim($value),  $model);
@@ -65,7 +82,7 @@ foreach($templates as $template){
 		
 		@mkdir('output/'.$template);
 		
-		chmod('output/'.$template, 0777);
+		exec('chmod -R 777 output/'.$template);
 		
 		
 		$static_assets = scandir('templates/'.$template);
@@ -87,11 +104,11 @@ foreach($templates as $template){
 				//echo $page.'<br />';
 				$text = @file_get_contents('db/'.$contents.'/'.$page);
 				
-				$html = renderMarkdown('db/'.$contents.'/config', 'templates/'.$template.'/index.html', $text);
+				$html = renderMarkdown('db/'.$contents, 'templates/'.$template.'/index.html', $text);
 				
 				@file_put_contents('output/'.$template.'/'.$page.'.html', $html);
 				
-				chmod('output/'.$template.'/'.$page.'.html', 0777);
+				exec('chmod -R 777 output/'.$template.'/'.$page.'.html');
 				
 			}
 		}

@@ -1,3 +1,4 @@
-TITLE|:|Default template
-DESCRIPTION|:|Test website
-URL|:|http://localhost/mrkUP/output/default
+TITLE|:|mrkUP
+DESCRIPTION|:|A very simple static website generator based on markdown and written in php.
+URL|:|http://subaddiction.github.com/mrkUP
+URL|:|http://localhost/mrkUP/output/default|:|REMOVE THIS LINE TO RENDER REAL URL (can comment using two separators |:| at the beginning of line)

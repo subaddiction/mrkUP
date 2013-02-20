@@ -2,9 +2,9 @@
 <html>
 	<head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>mrkUP</title>
-	<meta name="description" content="A very simple static website generator based on markdown and written in php." />
-	<meta name="keywords" content="mrkUP - A very simple static website generator based on markdown and written in php." />
+	<title>Default template</title>
+	<meta name="description" content="Test website" />
+	<meta name="keywords" content="Default template - Test website" />
 	<meta name="author" content="" />
 	<meta name="robots" content="index, follow" />
 	<meta name="viewport" content="width=device-width" />
@@ -24,14 +24,16 @@
 	Outdated browser!
 	<![endif]-->
 	<header>
-		<h1>mrkUP</h1>
-		<ul id="mainMenu"><li><a href="http://localhost/mrkUP/output/default/index.html">home</a></li><li><a href="http://localhost/mrkUP/output/default/test.html">test</a></li></ul>
+		<h1>Default template</h1>
+		<ul id="mainMenu"><li><a href="http://localhost/mrkUP/output/default/home.html">home</a></li><li><a href="http://localhost/mrkUP/output/default/test.html">test</a></li></ul>
 	</header>
 	
 	<div id="content">
-		<p>mrkUp is a very simple static website generator based on markdown and written in php.</p>
+		<h1>mrkUP</h1>
 
-<h3>!WARNING!</h3>
+<p>a very simple static website generator based on markdown and written in php.</p>
+
+<h3>!ATTENTION!</h3>
 
 <p>this software is NOT intended to be published in online/production environments.
 Please review the code and know what are you doing before running this scripts.</p>
@@ -42,13 +44,11 @@ Please review the code and know what are you doing before running this scripts.<
 
 <p>0) Place the code in a php environment, give to the http server's user or group write permissions to the folder /output/</p>
 
-<p>1) Configure a new website (see /db/default/config)</p>
+<p>1) Markdown contents file by file in a folder under /db/ (folder name is the project name, file name is page name, first page must be named "index" - in both folder and file names no spaces, no special characters)</p>
 
-<p>2) Markdown contents file by file in a folder under /db/ (folder name is the project name, file name is page name, first page must be named "index" - in both folder and file names no spaces, no special characters)</p>
+<p>2) Visit code directory with browser.</p>
 
-<p>3) Visit code directory with browser.</p>
-
-<p>4) Add your own templates.</p>
+<p>3) Add your own templates.</p>
 
 <h3>Rendering reserved strings</h3>
 
@@ -69,7 +69,7 @@ Please review the code and know what are you doing before running this scripts.<
 	</div>
 	
 	<footer>
-		mrkUP
+		Default template
 	</footer>
 		
 	</body>
