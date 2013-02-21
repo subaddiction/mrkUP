@@ -82,6 +82,14 @@ a img
 border:0;
 }
 
+#content img
+{
+width:800px;
+width:auto;
+height:auto;
+max-width:800px;
+}
+
 p
 {
 line-height:125%;

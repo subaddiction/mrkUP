@@ -9,15 +9,10 @@ if(file_exists('output/'.$_GET['download'])){
 	header('Content-Length: ' . filesize('output/'.$_GET['download'].'.tar.gz'));
 	header('Content-Disposition: attachment; filename='.$_GET['download'].'.tar.gz');
 	readfile('output/'.$_GET['download'].'.tar.gz');
-	
 	die();
 	
 } else {
 	echo 'Selected package does not exist.';
 }
-
-
-
-
 
 ?>
