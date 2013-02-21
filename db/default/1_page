@@ -1,2 +1,5 @@
 #X11 Pro Conf
+
+This is a sample page, including an image placed in the sppecial directory "mediadb".
+
 <img src="./mediadb/pro_desktop.jpg" />
